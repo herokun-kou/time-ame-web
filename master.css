@@ -17,7 +17,6 @@ body {
 #background_image {
   position: fixed;
   overflow: hidden;
-  filter: blur(7.5px);
 }
 
 #darkmode {
