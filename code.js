@@ -74,6 +74,7 @@ var digits = [
 var pauseTime = false;
 var pastTimeData = [-1, -1, -1, -1, -1, -1];
 var DIGIT_ANIM_DURATION = 300;
+var DIGIT_OFFSET = 25;
 
 function refreshTime() {
   if(pauseTime) return;
@@ -89,8 +90,8 @@ function refreshTime() {
   for(var i = 0; i < digits.length; i++){
     if(timeData[i] != pastTimeData[i]){
       var player = digits[i].animate([
-        {top: 'calc(50% - ' + (pastTimeData[i] * digitHeight) + 'px)'},
-        {top: 'calc(50% - ' + (timeData[i] * digitHeight) + 'px)'}
+        {top: window.innerHeight/2 - (pastTimeData[i] * digitHeight + DIGIT_OFFSET) + 'px'},
+        {top: window.innerHeight/2 - (timeData[i] * digitHeight + DIGIT_OFFSET) + 'px'}
       ], {
         duration: DIGIT_ANIM_DURATION,
         easing: "ease-out",
@@ -116,3 +117,6 @@ function refreshTime() {
 }
 
 refreshTime();
+
+var textObject = document.getElementById('text');
+textObject.innerHTML = preferences.mainText + '<br>' + preferences.subText;
