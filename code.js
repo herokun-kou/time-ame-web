@@ -56,6 +56,7 @@ var digits = [
 ];
 var pauseTime = false;
 var pastTimeData = [-1, -1, -1, -1, -1, -1];
+var DIGIT_ANIM_DURATION = 300;
 
 function refreshTime() {
   if(pauseTime) return;
@@ -74,29 +75,20 @@ function refreshTime() {
         {top: 'calc(50% - ' + (pastTimeData[i] * digitHeight) + 'px)'},
         {top: 'calc(50% - ' + (timeData[i] * digitHeight) + 'px)'}
       ], {
-        duration: 275,
+        duration: DIGIT_ANIM_DURATION,
         easing: "ease-out",
         fill: "forwards"
       });
       digitDiv = digits[i].getElementsByTagName('div');
       for(var j = 0; j < digitDiv.length; j++){
-        if(j == timeData[i]){
-          digitDiv[j].animate([
-            {opacity: window.getComputedStyle(digitDiv[j]).opacity},
-            {opacity: 1}
-          ], {
-            duration: 275,
-            fill: "forwards"
-          });
-        } else {
-          digitDiv[j].animate([
-            {opacity: window.getComputedStyle(digitDiv[j]).opacity},
-            {opacity: 0.3}
-          ], {
-            duration: 275,
-            fill: "forwards"
-          });
-        }
+        var targetOpacity = j == timeData[i] ? 1 : 0.3;
+        digitDiv[j].animate([
+          {opacity: window.getComputedStyle(digitDiv[j]).opacity},
+          {opacity: targetOpacity}
+        ], {
+          duration: DIGIT_ANIM_DURATION,
+          fill: "forwards"
+        });
       }
     }
   }
