@@ -1,6 +1,12 @@
 // code.js
 var backgroundImage = document.getElementById('background_image');
 
+if(preferences.useBgBlur){
+  backgroundImage.style.filter = 'blur(7.5px)';
+} else {
+  backgroundImage.style.filter = 'blur(0px)';
+}
+
 function rescaleBackgroundImage() {
   if(backgroundImage.clientWidth / backgroundImage.clientHeight > window.innerWidth / window.innerHeight){
     if(preferences.bgHorizontalGravity == 'center'){
