@@ -25,8 +25,19 @@ function rescaleBackgroundImage() {
   }
 }
 
-function reposition() {
+var MIN_WINDOW_WIDTH = 880;
 
+function reposition() {
+  var timeObject = document.getElementById('time');
+  if(window.innerWidth < MIN_WINDOW_WIDTH){
+    timeObject.style.right = '';
+    timeObject.style.left = '50%';
+    timeObject.style.transform = 'translateX(-50%)';
+  } else {
+    timeObject.style.right = '250px';
+    timeObject.style.left = '';
+    timeObject.style.transform = '';
+  }
 }
 
 window.addEventListener('resize', rescaleBackgroundImage);
