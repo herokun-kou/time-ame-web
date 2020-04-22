@@ -40,7 +40,7 @@ function reposition() {
     timeObject.style.left = '50%';
     timeObject.style.transform = 'translateX(-50%)';
   } else {
-    timeObject.style.right = '250px';
+    timeObject.style.right = '25rem';
     timeObject.style.left = '';
     timeObject.style.transform = '';
   }
@@ -62,7 +62,7 @@ if(!preferences.useDarkMode){
 
 
 var digitEach = document.getElementById('time_digit_min_1').childNodes[1];
-var digitHeight = digitEach.clientHeight + parseInt(window.getComputedStyle(digitEach).marginBottom);
+var digitHeight = digitEach.clientHeight + parseFloat(window.getComputedStyle(digitEach).marginBottom);
 var digits = [
   document.getElementById('time_digit_hour_10'),
   document.getElementById('time_digit_hour_1'),
